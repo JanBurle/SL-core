@@ -1,0 +1,11 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: var(--p2);
+
+  --fg: var(--body-fg);
+  --bg: var(--body-bg);
+}

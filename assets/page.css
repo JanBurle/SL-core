@@ -1,0 +1,61 @@
+/* body display */
+body {
+  /* lighthouse does not like 0 */
+  opacity: 0.0001;
+}
+
+body.ready {
+  opacity: 1;
+  transition: 0.1s opacity;
+}
+
+/* scrollbars */
+:root {
+  --sb-wdt: 7px;
+  --sb-brd: 1px;
+}
+
+::-webkit-scrollbar {
+  width: var(--sb-wdt);
+  height: var(--sb-wdt);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sb-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sb-fg);
+  border: var(--sb-brd) solid var(--sb-bg);
+  border-radius: var(--sb-wdt);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  border-color: var(--sb-fg);
+}
+
+/* decorations */
+:root {
+  /* padding */
+  --p1: 0.2rem;
+  --p2: 0.4rem;
+  --p4: 0.8rem;
+  /* radius */
+  --rad-sm: 0.4rem;
+  --rad-lg: 0.8rem;
+}
+
+.ptr {
+  cursor: pointer;
+}
+
+.ptr:hover {
+  text-decoration: underline;
+}
+
+/* elements */
+hr {
+  width: 100%;
+  border: thin solid var(--fg);
+  margin: var(--p2) 0;
+}

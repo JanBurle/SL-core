@@ -1,0 +1,13 @@
+/* works also in shadow dom */
+
+/* icons */
+svg.icon {
+  fill: none;
+  stroke: currentColor;
+}
+
+svg.icon.feather {
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

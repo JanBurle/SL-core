@@ -1,0 +1,10 @@
+@import url('reset.css');
+@import url('light.css');
+@import url('page.css');
+@import url('layout.css');
+
+body {
+  color: var(--body-fg);
+  background: var(--body-bg);
+  font-family: var(--font);
+}

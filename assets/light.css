@@ -1,0 +1,31 @@
+:root {
+  /* colours */
+  --white: #f0f0f0;
+  --gray: #dbe1e8;
+  --black: #1c1c1c;
+
+  --red: #e30613;
+  --green: #17b471;
+  --blue: #1f55a3;
+
+  --sea: #004a96;
+  --amber: #fdc00f;
+
+  /* foreground / background */
+  --body-fg: var(--blue);
+  --body-bg: var(--gray);
+
+  --hf-fg: var(--white); /* header + footer */
+  --hf-bg: var(--sea);
+  --aside-fg: var(--white);
+  --aside-bg: var(--blue);
+  --aside-hl: var(--sea);
+
+  --sb-fg: #888;
+  --sb-bg: var(--body-bg);
+
+  /* text size: small - medium - large */
+  --tx-sml: 0.8rem;
+  --tx-med: 1rem;
+  --tx-lge: 1.3rem;
+}

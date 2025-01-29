@@ -1,0 +1,3 @@
+<FilesMatch "\.(css|svg)$">
+  Require all granted
+</FilesMatch>
