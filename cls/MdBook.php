@@ -26,8 +26,9 @@ class MdBook extends Page {
         continue;
       // strip prefix
       $nm = $file;
-      if (false !== ($pos = strpos($nm, '.')))
-        $nm = substr($nm, $pos + 1);
+      // TODO // strip prefix 99- from $nm
+      // if (false !== ($pos = strpos($nm, '.')))
+      //   $nm = substr($nm, $pos + 1);
 
       if (is_dir("$dir/$file"))
         $res[] = $this->scan($nm, $relPath ? "$relPath/$file" : $file);
@@ -58,7 +59,7 @@ class MdBook extends Page {
 
   function showPage() {
     $page = $this->page;
-    $file = FRT . $this->basePath . ($page ? "/$page" : '');
+    $file = FRT . $page;
     if (is_dir($file))
       $file .= '/index.md';
     else
