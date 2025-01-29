@@ -10,8 +10,8 @@
     justify-content: center;
     border-radius: 2rem;
     cursor: pointer;
-    color: var(--white);
-    background: var(--blue);
+    color: white;
+    background: blue;
     border: thick solid red;
   }
 

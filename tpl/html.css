@@ -5,7 +5,4 @@ body {
   align-items: center;
 
   padding: var(--p2);
-
-  --fg: var(--body-fg);
-  --bg: var(--body-bg);
 }

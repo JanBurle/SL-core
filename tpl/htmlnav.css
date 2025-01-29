@@ -30,12 +30,13 @@ body {
       align-items: center;
       padding: var(--p1);
       gap: var(--p1);
-      color: var(--hf-fg);
-      background: var(--hf-bg);
+      color: var(--sec-fg);
+      background: var(--sec-bg);
     }
 
     > header {
       height: var(--hd-hgt);
+      border-bottom: thin solid var(--sec-bd);
 
       #menu {
         display: none;
@@ -44,15 +45,16 @@ body {
 
     > footer {
       height: var(--ft-hgt);
+      border-top: thin solid var(--sec-bd);
     }
   }
 
   > aside {
-    width: var(--aside-wdt);
-    color: var(--aside-fg);
-    background: var(--aside-bg);
-    --sb-fg: var(--aside-fg);
-    --sb-bg: var(--aside-bg);
+    width: min(var(--aside-wdt), 20%);
+    color: var(--sec-fg);
+    background: var(--sec-bg);
+    --sb-fg: var(--sec-bd);
+    --sb-bg: var(--sec-bg);
   }
 
   > main {
@@ -72,7 +74,8 @@ body {
     }
 
     li.active {
-      background: var(--aside-hl);
+      color: var(--sec-hl);
+      background: var(--sec-tl);
     }
 
     ol ol > li {

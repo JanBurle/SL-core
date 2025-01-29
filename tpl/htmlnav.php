@@ -13,20 +13,26 @@ $fetchPhp = URT . $this->fetchPhp . '/';
   <nav>
     <?= $this->nav ?>
   </nav>
-  <footer>
-  </footer>
+  <? if (conf('footer')) { ?>
+    <footer>
+    </footer>
+  <? } ?>
 </aside>
 
 <main>
   <header>
     <span id="menu"><s-ico menu></s-ico></span>
+    <span>
+      <?= $this->title ?>
+    </span>
   </header>
-  <a href=""></a>
   <article>
     <?= $this->body ?>
   </article>
-  <footer>
-  </footer>
+  <? if (conf('footer')) { ?>
+    <footer>
+    </footer>
+  <? } ?>
 </main>
 
 <? include __DIR__ . '/inc/foot.php' ?>

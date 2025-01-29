@@ -1,8 +1,12 @@
 <?
+function conf($key, $def = null): mixed {
+  global $conf;
+  return $conf[$key] ?? $def;
+}
+
 // Is this a development environment?
 function isDev(): int {
-  global $conf;
-  return @$conf['dev'] && ini_get('display_errors');
+  return conf('dev') && ini_get('display_errors');
 }
 
 function doBust(): bool {
@@ -60,7 +64,7 @@ function route(array $route, array $path): false|array {
 // let's go
 try {
   checkVersion();
-  $pages = $conf['pages'] ?? '';
+  $pages = conf('pages', '');
   [$file, $path] = route($route, $path);
   incFile(FRT . "$pages$file.php", $path) or err('Page not found', 404);
 } catch (Exception $e) {

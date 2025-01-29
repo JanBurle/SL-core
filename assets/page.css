@@ -56,6 +56,6 @@ body.ready {
 /* elements */
 hr {
   width: 100%;
-  border: thin solid var(--fg);
+  border: thin solid var(--pri-bd);
   margin: var(--p2) 0;
 }

@@ -4,7 +4,9 @@
 @import url('layout.css');
 
 body {
-  color: var(--body-fg);
-  background: var(--body-bg);
+  color: var(--pri-fg);
+  background: var(--pri-bg);
   font-family: var(--font);
+  --sb-fg: var(--pri-bd);
+  --sb-bg: var(--pri-bg);
 }
