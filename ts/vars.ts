@@ -6,4 +6,5 @@ var SLG: {
   SL: ''
   isDev: 0
   bust: ''
+  reVars: {[key: str]: ReVar<any>}
 }

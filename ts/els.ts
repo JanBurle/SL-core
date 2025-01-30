@@ -1,4 +1,4 @@
-var $reVars: {[key: str]: ReVar<any>} = {}
+SLG.reVars = {}
 
 // base classes for custom html elements
 class _Elem extends HTMLElement {
@@ -8,7 +8,7 @@ class _Elem extends HTMLElement {
   constructor() {
     super()
     // react
-    this.rv = $reVars[this.attr('$')] || new ReVar(0)
+    this.rv = SLG.reVars[this.attr('$')] || new ReVar(0)
   }
 
   connectedCallback() {
