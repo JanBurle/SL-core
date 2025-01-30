@@ -2,6 +2,7 @@
   <style>
     :root {
       --font: sans-serif;
+      --font-mono: monospace;
     }
   </style>
 <? } else { ?>
@@ -11,6 +12,7 @@
   <style>
     :root {
       --font: 'Ubuntu Sans', sans-serif;
+      --font-mono: monospace;
     }
   </style>
 <? } ?>
