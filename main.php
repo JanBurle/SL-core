@@ -14,32 +14,12 @@ function doBust(): bool {
 }
 
 require __DIR__ . '/paths.php';
-// utilities
 require FSL . 'util.php';
-
-// include file with pars
-function incFile(string $file, $path = []): bool {
-  // vars available in included file: $file, $path
-  return false !== @include $file;
-}
-
-// autoload classes
-spl_autoload_register(function (string $cls) {
-  // namespace to path
-  $file = str_replace('\\', '/', $cls) . '.php';
-  // class dirs
-  $clsDirs = [FSL . 'cls/', FRT . 'cls/'];
-  // search
-  foreach ($clsDirs as $dir)
-    if (incFile($dir . $file))
-      return true;
-  return false;
-});
+require FSL . 'autoload.php';
+require FSL . 'path.php';
 
 // routing
-parse_str($_SERVER['QUERY_STRING'], $qry);
-$path = explode('/', $qry['path'] ?? '');
-$path = array_filter($path, fn($s) => trim($s));
+$path = arrPath($_REQUEST['path'] ?? '');
 
 // error handling
 require FSL . 'err.php';

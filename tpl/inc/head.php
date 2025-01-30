@@ -21,12 +21,12 @@
 
   <link rel="stylesheet" href="<?= SL . 'assets/main.css' . $bust ?>" />
   <link rel="stylesheet" href="<?= SL . 'assets/els.css' . $bust ?>" title="shadow" />
-  <? if (file_exists(DRT . "$tplPath.css")) { ?>
+  <? if (is_file(DRT . "$tplPath.css")) { ?>
     <link rel="stylesheet" href="<?= "$tplPath.css" . $bust ?>" />
   <? } ?>
 
   <script src="<?= RT . 'dist/main.js' . $bust ?>"></script>
-  <? if (file_exists(DRT . "$tplPath.js")) { ?>
+  <? if (is_file(DRT . "$tplPath.js")) { ?>
     <script src="<?= "$tplPath.js" . $bust ?>"></script>
   <? } ?>
 </head>

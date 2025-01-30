@@ -1,11 +1,10 @@
 <? $this->els(['s-ico']) ?>
 <? include __DIR__ . '/inc/head.php' ?>
 <?
-$basePath = $this->basePath . '/';
 $pagesUrl = URT;
 $fetchPhp = URT . $this->fetchPhp . '/';
 ?>
-<?= script("SLG.nav={basePath:'$basePath',pagesUrl:'$pagesUrl',fetchPhp:'$fetchPhp'}") ?>
+<?= script("SLG.nav={basePath:'{$this->basePath}',pagesUrl:'$pagesUrl',fetchPhp:'$fetchPhp'}") ?>
 <aside>
   <header>
     <span id="menu"><s-ico arrow-left></s-ico></span>

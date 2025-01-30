@@ -1,5 +1,7 @@
 # SL-core
 
+_**Under construction**_
+
 Core part of the SeiteLite framework.
 
 ## Directory structure

@@ -9,15 +9,15 @@ doc.whenDone(() => {
   back.clk(() => aside.tgl('active'))
 })
 
-let fetchPage = (page, replace) => {
-  let href = SLG.nav.pagesUrl + page
-  if (replace) history.replaceState(page, '', href)
-  else history.pushState(page, '', href)
+let fetchPage = (path, replace) => {
+  let href = SLG.nav.pagesUrl + path
+  if (replace) history.replaceState(path, '', href)
+  else history.pushState(path, '', href)
 
-  navPage(page)
+  navPage(path)
 
   let url = new URL(SLG.nav.fetchPhp)
-  url.searchParams.set('page', SLG.nav.basePath + page)
+  url.searchParams.set('path', SLG.nav.basePath + path)
 
   fetch(url)
     .then((res) => res.text())
@@ -26,18 +26,23 @@ let fetchPage = (page, replace) => {
     })
 }
 
-let gotoPage = (li) => {
-  let page = li.getAttribute('page')
+let gotoPage = (path) => {
   SLG.nav.aside.tgl('active', false)
-  fetchPage(page, false)
+  fetchPage(path, false)
 }
 
-let navPage = (page) => {
+let navPage = (path) => {
   let lis = doc.qAll('body > aside > nav li')
-  lis.forEach((li) => li.tgl('active', li.getAttribute('page') == page))
+  lis.forEach((li) => li.tgl('active', li.getAttribute('path') == path))
+}
+
+let onLis = () => {
+  let lis = doc.qAll('body > aside > nav li')
+  let go = (li) => gotoPage(li.getAttribute('path'))
+  lis.forEach((li) => (li.onclick = () => go(li)))
 }
 
 win.addEventListener('popstate', (event) => {
-  let page = event.state || ''
-  fetchPage(page, true)
+  let path = event.state || ''
+  fetchPage(path, true)
 })

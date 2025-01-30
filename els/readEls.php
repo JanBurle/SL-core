@@ -39,7 +39,7 @@ function readEls(string $tplDir, string $jsDir, array $els) {
     $tpl = "$tplDir/$el.php";  // template
     $cls = "$jsDir/$el.js";   // class
 
-    if (!file_exists($tpl) || !file_exists($cls))
+    if (!is_file($tpl) || !is_file($cls))
       continue;
 
     try {

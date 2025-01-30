@@ -19,3 +19,7 @@ function bust(): string {
 function h(string $s): string {
   return htmlspecialchars($s);
 }
+
+function j(string $s): string {
+  return json_encode($s, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+}
