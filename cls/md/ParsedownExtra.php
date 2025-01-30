@@ -324,10 +324,10 @@ class ParsedownExtra extends Parsedown {
 
       $Element = array(
         'name' => 'sup',
-        'attributes' => array('id' => 'fnref' . $this->DefinitionData['Footnote'][$name]['count'] . ':' . $name),
+        'attributes' => array('id' => 'fnref' . $this->DefinitionData['Footnote'][$name]['count'] . '-' . $name),
         'element' => array(
           'name' => 'a',
-          'attributes' => array('href' => '#fn:' . $name, 'class' => 'footnote-ref'),
+          'attributes' => array('onclick' => "scrFn('fn-$name')", 'class' => 'ptr footnote-ref'),
           'text' => $this->DefinitionData['Footnote'][$name]['number'],
         ),
       );
@@ -468,9 +468,9 @@ class ParsedownExtra extends Parsedown {
         $backLinkElements[] = array(
           'name' => 'a',
           'attributes' => array(
-            'href' => "#fnref$number:$definitionId",
+            'onclick' => "scrFn('fnref$number-$definitionId')",
             'rev' => 'footnote',
-            'class' => 'footnote-backref',
+            'class' => 'ptr footnote-backref',
           ),
           'rawHtml' => '&#8617;',
           'allowRawHtmlInSafeMode' => true,
@@ -511,7 +511,7 @@ class ParsedownExtra extends Parsedown {
 
       $Element['elements'][1]['elements'][] = array(
         'name' => 'li',
-        'attributes' => array('id' => 'fn:' . $definitionId),
+        'attributes' => array('id' => 'fn-' . $definitionId),
         'elements' => array_merge(
           $textElements
         ),
