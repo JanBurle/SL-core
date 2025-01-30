@@ -23,7 +23,7 @@ class Page extends Site {
     $this->elsTodo = array_merge($this->elsTodo, (array) $tags);
   }
 
-  function readEls() {
+  function readEls(): array {
     $elsDone = $this->elsDone;
     $elsTodo = array_diff($this->elsTodo, $elsDone);
     $this->elsTodo = [];

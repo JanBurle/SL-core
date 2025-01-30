@@ -75,7 +75,7 @@ interface Node {
 
 ;(() => {
   let p = Node.prototype
-  p.apd = (elTag) => {
+  p.apd = function (elTag) {
     let el = elTag.isStr() ? doc.createElement(elTag as tag) : (elTag as el)
     return this.appendChild(el)
   }

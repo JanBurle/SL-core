@@ -18,7 +18,7 @@ function stripPrefix(string $name): string {
   return $name;
 }
 
-function findFile(string $dir, string $name) {
+function findFile(string $dir, string $name): array {
   foreach (scandir($dir) as $file) {
     if (in_array($file, ['.', '..', 'index.md']))
       continue;

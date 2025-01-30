@@ -11,8 +11,8 @@ function relPath(string $dir): string {
 }
 
 // corresponding paths relative to document root
-define('RT', relPath(FRT, DRT));                // website root
-define('SL', relPath(FSL, DRT));                // SeiteLite root
+define('RT', relPath(FRT));                     // website root
+define('SL', relPath(FSL));                     // SeiteLite root
 
 // URL website root
 define('URT', ('on' == ($_SERVER['HTTPS'] ?? '') ? "https" : "http") . "://$_SERVER[HTTP_HOST]" . RT);

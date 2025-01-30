@@ -17,7 +17,7 @@ function bust(): string {
 }
 
 function h(string $s): string {
-  return htmlspecialchars($s);
+  return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 }
 
 function j(string $s): string {

@@ -1,5 +1,4 @@
 <?
-
 require FSL . 'md.php';
 
 class MdBook extends Page {
@@ -18,7 +17,7 @@ class MdBook extends Page {
     echo script("onLis();navPage('$path')");
   }
 
-  function scan($name, $filePath, $nmPath) {
+  function scan(string $name, string $filePath, string $nmPath): array {
     $res = [];
 
     $dir = FRT . $this->basePath . $filePath;
@@ -42,7 +41,7 @@ class MdBook extends Page {
     return [$name, $nmPath, $res];
   }
 
-  function navol($val) {
+  function navol(array $val): string {
     [$name, $relPath, $arr] = $val;
     $path = j($relPath);
     $res = tag('li', $name, "class='ptr' path=$path");

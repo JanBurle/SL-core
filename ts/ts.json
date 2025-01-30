@@ -10,7 +10,6 @@
     "types.ts",
     "vars.ts",
     "dev.ts",
-    "dev.ts",
     "proto.ts",
     "resp.ts",
     "react.ts",
