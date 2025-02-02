@@ -14,6 +14,7 @@ function doBust(): bool {
 }
 
 require __DIR__ . '/paths.php';
+defPaths();
 require FSL . 'util.php';
 require FSL . 'autoload.php';
 require FSL . 'path.php';

@@ -13,7 +13,7 @@ class Page extends Site {
     $this->elsTodo = customTags($this->body);
 
     $tplBase = FSL . 'tpl/' . $this->tpl;
-    $tplPath = relPath($tplBase);
+    $tplPath = pathTail($tplBase, FSL);
     ob_start();
     require $tplBase . '.php';
     echo ob_get_clean();

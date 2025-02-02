@@ -36,12 +36,7 @@ header("Content-Type: text/html");
 </head>
 
 <body>
-  <?
-  $index =
-    ('on' == ($_SERVER['HTTPS'] ?? '') ? "https" : "http") . "://$_SERVER[HTTP_HOST]" .
-    substr(realpath(__DIR__ . '/../..'), strlen($_SERVER['DOCUMENT_ROOT']));
-  ?>
-  <a href="<?= h($index) ?>">
+  <a href="<?= h(URT) ?>">
     <svg viewBox="0 0 60 60">
       <circle cx="30" cy="30" r="30" fill="#46211A" />
       <path stroke-width="2.7" stroke="#A43820" stroke-linecap="round" stroke-linejoin="round" fill="#F1D3B2" d="M11.25 41.25v7.5l4.5-3 3 3h7.5l-15-15v-7.5l22.5 22.5h7.5l-30-30v-7.5l37.5 37.5v-7.5l-30-30h7.5l22.5 22.5v-7.5l-15-15h7.5l3 3 4.5-3v7.5l-37.5 22.5" />
