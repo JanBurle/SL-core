@@ -9,6 +9,10 @@ function isDev(): int {
   return conf('dev') && ini_get('display_errors');
 }
 
+function printError($s) {
+  echo "** $s **\n";
+}
+
 function doBust(): bool {
   return isDev();
 }

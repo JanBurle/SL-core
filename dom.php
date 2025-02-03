@@ -3,12 +3,12 @@
 function domFrom(string $html): DOMDocument {
   $dom = new DOMDocument();
   libxml_use_internal_errors(true);
-  try {
-    $html && $dom->loadHTML($html);
-  } catch (Exception $e) {
-    // TODO
+  $html && $dom->loadHTML($html);
+  if (isDev()) {
+    foreach (libxml_get_errors() as $error)
+      if (LIBXML_ERR_FATAL == $error->level)
+        printError("domFrom: $error->message");
   }
-  // TODO libxml_get_errors()
   libxml_clear_errors();
   return $dom;
 }
