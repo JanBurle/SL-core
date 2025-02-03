@@ -45,7 +45,7 @@ let onLis = () => {
 // scroll to footnote
 let scrFn = (id) => {
   let anchor = doc.qSel('body > main > article #' + id)
-  cl(anchor).scrollIntoView({behavior: 'smooth'})
+  anchor?.scrollIntoView({behavior: 'smooth'})
 }
 
 win.addEventListener('popstate', (event) => {

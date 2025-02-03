@@ -52,9 +52,11 @@ body {
   > aside {
     color: var(--sec-fg);
     background: var(--sec-bg);
+    width: min(var(--aside-wdt), 20%);
     --sb-fg: var(--sec-bd);
     --sb-bg: var(--sec-bg);
-    width: min(var(--aside-wdt), 20%);
+    --bt-fg: var(--sec-bg);
+    --bt-bg: var(--sec-hl);
   }
 
   > main {

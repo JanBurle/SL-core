@@ -9,4 +9,6 @@ body {
   font-family: var(--font);
   --sb-fg: var(--pri-bd);
   --sb-bg: var(--pri-bg);
+  --bt-fg: var(--pri-bg);
+  --bt-bg: var(--pri-hl);
 }

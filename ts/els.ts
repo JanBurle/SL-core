@@ -7,7 +7,12 @@ class _Elem extends HTMLElement {
 
   constructor() {
     super()
+    // reactive variable
     this.rv = SLG.reVars[this.attr('$')] || new ReVar(0)
+    // common behaviour
+    let attr: string
+    if ((attr = this.attr('go')))
+      this.onclick = (e) => SLG.go(attr, e.ctrlKey || this.hasAttr('blank'))
   }
 
   connectedCallback() {

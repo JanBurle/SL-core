@@ -1,27 +1,27 @@
 <svg></svg>
 <span></span>
-<s-ico meh name='meh'></s-ico>
+<svg></svg>
 <style>
   :host {
-    width: 13rem;
-    height: 3rem;
+    width: 7rem;
+    height: 2rem;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 2rem;
+    gap: .2em;
+    border-radius: 2em;
     cursor: pointer;
-    color: white;
-    background: blue;
-    border: thick solid red;
+    color: var(--bt-fg);
+    background: var(--bt-bg);
   }
 
   :host(:hover) {
-    filter: brightness(1.1);
+    filter: brightness(1.2);
   }
 
   svg {
-    width: 2em;
-    height: 2em;
+    width: 1.3em;
+    height: 1.3em;
   }
 
   s-ico {
