@@ -3,16 +3,14 @@ SLG.reVars = {}
 // base classes for custom html elements
 class _Elem extends HTMLElement {
   root: ShadowRoot | HTMLElement
-  rv: ReVar<any>
+  rv: ReVar<any> // react
 
   constructor() {
     super()
-    // react
     this.rv = SLG.reVars[this.attr('$')] || new ReVar(0)
   }
 
   connectedCallback() {
-    // react
     this.rv.sub(this)
     this.init()
     this.revar()
@@ -30,7 +28,7 @@ class _Elem extends HTMLElement {
 
   // --- attributes ---
 
-  // test attribute
+  // test attribute existence
   hasAttr(attr: str): bol {
     return this.hasAttribute(attr)
   }
@@ -80,60 +78,68 @@ class _Elem extends HTMLElement {
   // --- inner nodes ---
 
   // selector
-  qSel(sel: str) {
-    return this.root.querySelector(sel) as HTMLElement
+  qSel(sel: str): el {
+    return this.root.querySelector(sel)
   }
 
   // selector
-  qAll(sel: str) {
+  qAll(sel: str): NodeListOf<el> {
     return this.root.querySelectorAll(sel)
   }
 
   // selector
-  qId(id: str) {
+  qId(id: str): el {
     return this.qSel('#' + id)
   }
 
-  // --- slot nodes ---
-  slotNodes() {
+  // --- slot ---
+
+  // slot nodes
+  slotNodes(): Node[] {
     return (this.qSel('slot') as HTMLSlotElement).assignedNodes()
   }
 
-  slotTags(tag: str) {
+  // slot nodes, filtered by tag
+  slotTagNodes(tag: str): Node[] {
     let nodes = this.slotNodes()
     tag = tag.toUpperCase()
     return nodes.filter((node) => tag == node.nodeName)
   }
 
-  slotText(tag = '', def = '') {
-    return (tag ? this.slotTags(tag) : this.slotNodes())[0]?.textContent || def
+  // slot text
+  slotText(tag = '', def = ''): str {
+    return (tag ? this.slotTagNodes(tag) : this.slotNodes())[0]?.textContent || def
   }
 
-  slotNum(tag = '', def = 0) {
+  // slot number
+  slotNum(tag = '', def = 0): num {
     return this.slotText(tag).toNum(def)
   }
 
-  slotInt(tag = '', def = 0 as int) {
+  // slot integer
+  slotInt(tag = '', def = 0 as int): int {
     return this.slotText(tag).toInt(def)
   }
 
-  slotObj(tag = '', def = null) {
+  // slot object
+  slotObj(tag = '', def = null): any {
     return this.slotText(tag).toObj(def)
   }
 
   // slot selector
-  qSlot(sel: str) {
+  qSlot(sel: str): el {
     return this.querySelector(sel)
   }
 
   // --- handle nodes ---
 
-  // tag or element
-  _el(elTag: elTag) {
+  // tag or element to element
+  _el(elTag: elTag): el {
     return elTag.isStr() ? this.qSel(elTag as str) : (elTag as el)
   }
 
-  _slotEl(elTag: elTag) {
+  // slot tag or element to element
+  _slotEl(elTag: elTag): el {
     return elTag.isStr() ? this.qSlot(elTag as str) : (elTag as el)
   }
 
@@ -142,13 +148,13 @@ class _Elem extends HTMLElement {
     return this.root.apd(elTag)
   }
 
-  // move from slot inside
+  // move el under toElTag
   move(toElTag: elTag, el: el) {
     this._el(toElTag).appendChild(this._slotEl(el))
   }
 
   // set inner HTML
-  set(elTag: elTag, html: str) {
+  setHtml(elTag: elTag, html: str) {
     this._el(elTag).innerHTML = html
   }
 
@@ -159,7 +165,7 @@ class _Elem extends HTMLElement {
     this.style.top = top + 'px'
   }
 
-  // call back when host width changes
+  // callback when host width changes
   onWidth(cb: cbNum) {
     new ResizeObserver((els) => {
       let {clientWidth} = els[0].target
@@ -167,27 +173,28 @@ class _Elem extends HTMLElement {
     }).observe(this)
   }
 
-  // call back when host comes into view, only once
+  // callback when host comes into view (once)
   onView(cb: cb) {
     new IntersectionObserver((els, observer) => {
       if (0 < els[0].intersectionRatio) {
-        observer.disconnect()
+        observer.disconnect() // call only once
         cb()
       }
     }).observe(this)
   }
 
   // --- reactive attributes ---
-  static reattrs: str[] = []
+  static reAttrs: str[] = []
 
   static get observedAttributes() {
-    return this.reattrs
+    return this.reAttrs
   }
 
   attributeChangedCallback(name: str, oldVal: any, newVal: any) {
     if (oldVal != newVal) this.reatr(name, newVal)
   }
 
+  // called on reactive attribute change
   reatr(name: str, val: any) {}
 }
 
@@ -199,6 +206,7 @@ interface CustomElementConstructor {
 // common shadow DOM style
 let shadowStyle = new CSSStyleSheet()
 
+// make css rules available in shadow DOM
 for (let sheet of doc.styleSheets as any as CSSStyleSheet[]) {
   // based on title: transfer rules
   if ('shadow' == sheet.title)
@@ -225,16 +233,14 @@ class LightElem extends _Elem {
   constructor() {
     super()
     this.root = this
-    // use template
+    // use template if availablem (it is optional for light DOM elements)
     let tplId = (this.constructor as CustomElementConstructor).tag
-    // a template is optional for light DOM elements
     let tpl = (doc.qId(tplId) as HTMLTemplateElement)?.content
     tpl && doc.body.appendChild(tpl)
-    // construction
-    this.init()
   }
 }
 
+// define element
 let defElem = (tag: str, cls: CustomElementConstructor) => {
   cls.tag = tag
   customElements.define(tag, cls)

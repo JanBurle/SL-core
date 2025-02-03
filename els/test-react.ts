@@ -1,6 +1,6 @@
 // @ts-ignore Duplicate identifier '_'
 class _ extends ShadowElem {
-  static reattrs = ['clr']
+  static reAttrs = ['clr']
   span: HTMLElement
 
   init() {

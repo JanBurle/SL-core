@@ -1,9 +1,9 @@
 interface Object {
   isStr(): bol
   isFun(): bol
-  // TODO generics
-  asArr(): Array<any>
-  toArr(): Array<any>
+  asArr<T = any>(): Array<T>
+  toArr<T = any>(): Array<T>
+  toArr<T = any>(): Array<T>
 }
 
 ;(() => {
