@@ -59,3 +59,12 @@ hr {
   border: thin solid var(--pri-bd);
   margin: var(--p2) 0;
 }
+
+button {
+  cursor: pointer;
+  color: var(--bt-bg);
+  background: var(--bt-fg);
+  border: thin solid var(--bt-bg);
+  padding: var(--p1) var(--p2);
+  border-radius: var(--rad-sm);
+}

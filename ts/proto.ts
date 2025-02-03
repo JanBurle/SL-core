@@ -22,6 +22,29 @@ interface Object {
   }
 })()
 
+interface Number {
+  isInt(): bol
+  clamp(min: num, max: num): num
+  genArr(f: (i: int, n: int) => any): Array<any>
+  loop(f: (i: int, n: int) => void): void
+}
+
+;(() => {
+  let p = Number.prototype
+  p.isInt = function () {
+    return Number.isInteger(this.valueOf())
+  }
+  p.clamp = function (min, max) {
+    return Math.max(min, Math.min(this, max))
+  }
+  p.genArr = function (f) {
+    return Array.from({length: this}, (_, i) => f(i as int, this))
+  }
+  p.loop = function (f) {
+    for (let i = 0; i < this; i++) f(i as int, this)
+  }
+})()
+
 interface String {
   toNum: (def?: num) => num
   toInt: (def?: int) => int
