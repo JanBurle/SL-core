@@ -1,5 +1,5 @@
 <? $this->els(['s-ico']) ?>
-<? include __DIR__ . '/inc/head.php' ?>
+<? include FSL . '/tpl/inc/head.php' ?>
 <?
 $pagesUrl = URT;
 $fetchPhp = URT . $this->fetchPhp . '/';
@@ -34,4 +34,4 @@ $fetchPhp = URT . $this->fetchPhp . '/';
   <? } ?>
 </main>
 
-<? include __DIR__ . '/inc/foot.php' ?>
+<? include FSL . '/tpl/inc/foot.php' ?>

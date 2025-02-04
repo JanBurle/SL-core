@@ -1,5 +1,5 @@
 /* Five stars, val: the number of stars to fill. */
-// @ts-ignore Duplicate identifier '_'
+// @ts-ignore first line
 class _ extends ShadowElem {
   static reAttrs = ['val']
   n: int

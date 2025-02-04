@@ -1,5 +1,5 @@
-<? include __DIR__ . '/inc/head.php' ?>
+<? include FSL . '/tpl/inc/head.php' ?>
 
 <?= $this->body ?>
 
-<? include __DIR__ . '/inc/foot.php' ?>
+<? include FSL . '/tpl/inc/foot.php' ?>

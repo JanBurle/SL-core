@@ -13,15 +13,16 @@ class Page extends Site {
     $this->elsTodo = customTags($this->body);
 
     // search template dirs
-    foreach ([FRT,FSL] as $dir) {
-      $tplPath = 'tpl/' . $this->tpl;
-      $tplBase = $dir . $tplPath;
-      $tplFile = $tplBase. '.php';
+    foreach ([[FRT, RT], [FSL, SL]] as [$dir, $url]) {
+      $tpl = 'tpl/' . $this->tpl;
+      $tplBase = $dir . $tpl;
+      $tplFile = $tplBase . '.php';
+      $tplPath = $url . $tpl;
 
-      if (file_exists($tplFile))
+      if (is_file($tplFile))
         break;
       else
-        $tplFile='';
+        $tplFile = '';
     }
 
     check($tplFile, 'missing template');
@@ -41,6 +42,6 @@ class Page extends Site {
     $this->elsTodo = [];
     $this->elsDone = array_merge($elsDone, $elsTodo);
 
-    return readEls(FSL . 'els', FRT . 'dist/els', $elsTodo);
+    return readEls(FRT . 'els', FSL . 'els', FRT . 'dist/els', $elsTodo);
   }
 }

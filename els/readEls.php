@@ -31,16 +31,19 @@ function stripJs($s) {
 }
 
 
-function readEls(string $tplDir, string $jsDir, array $els) {
+function readEls(string $tplDir1, string $tplDir2, string $jsDir, array $els) {
   $res = [];
   $custTags = []; // newly discovered
 
   foreach ($els as $el) {
-    $tpl = "$tplDir/$el.php";  // template
-    $cls = "$jsDir/$el.js";   // class
+    $cls = "$jsDir/$el.js"; // class
 
-    if (!is_file($tpl) || !is_file($cls))
-      continue;
+    $tpl = "$tplDir1/$el.php";  // template
+    if (!is_file($tpl) || !is_file($cls)) {
+      $tpl = "$tplDir2/$el.php";  // template
+      if (!is_file($tpl) || !is_file($cls))
+        continue;
+    }
 
     try {
       ob_start();

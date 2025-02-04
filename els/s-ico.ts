@@ -1,4 +1,4 @@
-// @ts-ignore Duplicate identifier '_'
+// @ts-ignore first line
 class _ extends ShadowElem {
   constructor() {
     super()
