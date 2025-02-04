@@ -9,11 +9,9 @@ function incFile(string $file, $path = []): bool {
 spl_autoload_register(function (string $cls) {
   // namespace to path
   $file = str_replace('\\', '/', $cls) . '.php';
-  // class dirs
-  $clsDirs = [FSL . 'cls/', FRT . 'cls/'];
-  // search
-  foreach ($clsDirs as $dir)
-    if (incFile($dir . $file))
+  // search class dirs
+  foreach ([FRT, FSL] as $dir)
+    if (incFile($dir . 'cls/' . $file))
       return true;
   return false;
 });

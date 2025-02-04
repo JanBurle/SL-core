@@ -12,10 +12,22 @@ class Page extends Site {
     $this->body = ob_get_clean();
     $this->elsTodo = customTags($this->body);
 
-    $tplBase = FSL . 'tpl/' . $this->tpl;
-    $tplPath = pathTail($tplBase, FSL);
+    // search template dirs
+    foreach ([FRT,FSL] as $dir) {
+      $tplPath = 'tpl/' . $this->tpl;
+      $tplBase = $dir . $tplPath;
+      $tplFile = $tplBase. '.php';
+
+      if (file_exists($tplFile))
+        break;
+      else
+        $tplFile='';
+    }
+
+    check($tplFile, 'missing template');
+
     ob_start();
-    require $tplBase . '.php';
+    require $tplFile;
     echo ob_get_clean();
   }
 
