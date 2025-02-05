@@ -11,8 +11,20 @@ class _Elem extends HTMLElement {
     this.rv = SLG.reVars[this.attr('$')] || new ReVar(0)
     // common behaviour
     let attr: string
-    if ((attr = this.attr('go')))
+    if ((attr = this.attr('go'))) {
+      this.tgl('ptr', true)
       this.onclick = (e) => SLG.go(attr, e.ctrlKey || this.hasAttr('blank'))
+    } else if ((attr = this.attr('on'))) {
+      this.tgl('ptr', true)
+      this.onclick = () => new Function(attr).call(this)
+    }
+  }
+
+  _tplCl() {
+    // clone template if availablem (it is optional for light DOM elements)
+    let tplId = (this.constructor as CustomElementConstructor).tag
+    let tpl = (doc.qId(tplId) as HTMLTemplateElement)?.content
+    tpl && this.root.appendChild(tpl.cloneNode(true))
   }
 
   connectedCallback() {
@@ -224,10 +236,7 @@ class ShadowElem extends _Elem {
   constructor() {
     super()
     this.root = this.attachShadow({mode: 'open'})
-    // clone template
-    let tplId = (this.constructor as CustomElementConstructor).tag
-    let tpl = (doc.qId(tplId) as HTMLTemplateElement).content
-    this.root.appendChild(tpl.cloneNode(true))
+    this._tplCl()
     // style
     this.root.adoptedStyleSheets = [shadowStyle]
   }
@@ -238,10 +247,7 @@ class LightElem extends _Elem {
   constructor() {
     super()
     this.root = this
-    // use template if availablem (it is optional for light DOM elements)
-    let tplId = (this.constructor as CustomElementConstructor).tag
-    let tpl = (doc.qId(tplId) as HTMLTemplateElement)?.content
-    tpl && doc.body.appendChild(tpl)
+    this._tplCl()
   }
 }
 
